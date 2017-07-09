@@ -33,6 +33,21 @@ class Plugin extends PluginBase
 
     }
 
+	public function registerSettings()
+	{
+		return [
+			'rajaongkir' => [
+				'label'       => 'Raja Ongkir',
+				'description' => 'Manage shipping plugin using Raja Ongkir API.',
+				'category'    => 'Shipping',
+				'icon'        => 'icon-truck',
+                'class'       => 'Rahman\RajaOngkir\Models\Settings',
+				'order'       => 500,
+				'keywords'    => 'shipping raja ongkir'
+			]
+		];
+	}
+
     /**
      * Boot method, called right before the request route.
      *

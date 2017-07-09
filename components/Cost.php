@@ -4,6 +4,7 @@ use Cache;
 use Session;
 use Event;
 use Rahman\RajaOngkir\Classes\RajaOngkir;
+use Rahman\RajaOngkir\Models\Settings;
 use Cms\Classes\ComponentBase;
 
 class Cost extends ComponentBase
@@ -47,8 +48,8 @@ class Cost extends ComponentBase
 
     public function onSelectCourier()
     {
-        $origin = $this->decodeResponse($this->rajaongkir()->city(115)->get())->results;
-        $destination = $this->decodeResponse($this->rajaongkir()->subdistrict(1158)->get())->results;
+        $origin = $this->decodeResponse($this->rajaongkir()->city(Settings::get('origin_city'))->get())->results;
+        $destination = $this->decodeResponse($this->rajaongkir()->subdistrict(post('subdistrict'))->get())->results;
 
         $response =  $this->rajaongkir()->cost(
             $origin->city_id,
@@ -61,7 +62,6 @@ class Cost extends ComponentBase
 
         $this->page['service'] = $result = $this->decodeResponse($response)->results[0];
 
-        Cache::forget(Session::getId());
         Cache::put(Session::getId(), $result, 5);
 
     }
