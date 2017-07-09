@@ -1,0 +1,6 @@
+{% if cities %}
+    <option value="" selected disabled>-- Select City --</option>
+    {% for city in cities %}
+    <option value="{{ city.city_id }}">{{ city.city_name }}</option>
+    {% endfor %}
+{% endif %}

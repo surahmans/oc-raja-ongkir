@@ -1,0 +1,6 @@
+{% if subdistricts %}
+    <option value="" selected disabled>-- Select Subdistrict --</option>
+    {% for subdistrict in subdistricts %}
+    <option value="{{ subdistrict.subdistrict_id }}">{{ subdistrict.subdistrict_name }}</option>
+    {% endfor %}
+{% endif %}

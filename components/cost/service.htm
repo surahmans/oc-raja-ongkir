@@ -1,0 +1,6 @@
+{% if service %}
+    <option value="" selected disabled>-- Select service --</option>
+    {% for cost in service.costs %}
+    <option value="{{ cost.service}}">{{ cost.service }} ({{ cost.cost[0].value|currency({format: 'short'}) }})</option>
+    {% endfor %}
+{% endif %}

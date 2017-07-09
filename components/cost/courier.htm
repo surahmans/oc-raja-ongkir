@@ -1,0 +1,6 @@
+{% if couriers %}
+    <option value="" selected disabled>-- Select Courier --</option>
+    {% for code, name in couriers %}
+    <option value="{{ code }}">{{ name }}</option>
+    {% endfor %}
+{% endif %}
